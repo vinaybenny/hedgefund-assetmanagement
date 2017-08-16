@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Manage Assets - Parameter Form </title>
+
+    <!-- Bootstrap Stylesheets-->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <link href="assets/styles.css" rel="stylesheet" media="screen">
+
+    <!-- Javascript Links-->
+    <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    
+    <link href="vendors/datepicker.css" rel="stylesheet" media="screen">
+    <link href="vendors/uniform.default.css" rel="stylesheet" media="screen">
+    <link href="vendors/chosen.min.css" rel="stylesheet" media="screen">
+    <link href="vendors/wysiwyg/bootstrap-wysihtml5.css" rel="stylesheet" media="screen">
+    <script src="vendors/jquery-1.9.1.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendors/jquery.uniform.min.js"></script>
+    <script src="vendors/chosen.jquery.min.js"></script>
+    <script src="vendors/bootstrap-datepicker.js"></script>
+    <script src="vendors/wysiwyg/wysihtml5-0.3.0.js"></script>
+    <script src="vendors/wysiwyg/bootstrap-wysihtml5.js"></script>
+    <script src="vendors/wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script src="assets/scripts.js"></script>
+    <script src="custom/postsimparams.js"></script>
+
+</head>
+
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <!-- The following stylesheet call causes the collapse of navigation bar at the top of the webpage into a single button
+                       when the rendering size is less than 1024*768. Good for future porting to mobile apps -->
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <a class="brand" href="#">Simulation Panel</a>
+
+                <!-- START OF TOP ACTION BAR -->
+                <div class="nav-collapse collapse">
+                    <!-- START OF USER MENU -->
+                    <ul class="nav pull-right">
+                        <!-- The following list consists of elements for User related functionalities(like Profile, Logout, etc)
+                                 at far-right-top corner -->
+                        <li class="dropdown">
+                            <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i>Frodo Baggins <i class="caret"></i>
+                            </a>
+                            <!-- Elements of the drop-down menu from username -->
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a tabindex="-1" href="#">Profile</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a tabindex="-1" href="login.html">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- END OF USER MENU -->
+                    <!-- START OF MAIN MENU: Following unordered list consists of the main menu items on the top action bar -->
+                    <ul class="nav">
+                        <!-- This item would be active -->
+                        <li class="active">
+                            <a href="#">Dashboard</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Settings <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" id="menu1">
+                                <li>
+                                    <a href="#">Tools <i class="icon-arrow-right"></i>
+
+                                    </a>
+                                    <ul class="dropdown-menu sub-menu">
+                                        <li>
+                                            <a href="#">Reports</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Logs</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Errors</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">SEO Settings</a>
+                                </li>
+                                <li>
+                                    <a href="#">Other Link</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">Other Link</a>
+                                </li>
+                                <li>
+                                    <a href="#">Other Link</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--NON FUNCTIONAL-The following is pretty much non functional code until closing of this comment,
+                                 for extensions in the future. -->
+                        <li class="dropdown">
+                            <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Content <i class="caret"></i>
+
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a tabindex="-1" href="#">Blog</a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="#">News</a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="#">Custom Pages</a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="#">Calendar</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a tabindex="-1" href="#">FAQ</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Users <i class="caret"></i>
+
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a tabindex="-1" href="#">User List</a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="#">Search</a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="#">Permissions</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- NON FUNCTIONAL End -->
+
+                    </ul>
+                    <!-- END OF MAIN MENU -->
+                </div>
+                <!-- END OF TOP ACTION BAR -->
+            </div>
+        </div>
+    </div>
+    <!-- START OF PAGE BODY -->
+    <div class="container-fluid">
+        <div class="row-fluid">
+
+            <!-- START OF SIDE BAR -->
+            <div class="span3" id="sidebar">
+                <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                    <!-- Following are the list of items in the side bar. The sidebar is also collapsible in case
+                            viewing resolution is lesser than 1024*768 for later mobile app compatibility -->
+                    <li>
+                        <a href="index.html"><i class="icon-chevron-right"></i>Simulation History</a>
+                    </li>
+                    <li>
+                        <a href="Statspage.html">
+                            <i class="icon-chevron-right"></i>
+                            <span class="badge badge-success pull-right" id="StatsPage_badge" hidden></span>Statistics (Charts)</a>
+                    </li>
+                    <li>
+                        <a href="stats.html"><i class="icon-chevron-right"></i>Estimate Parameters</a>
+                    </li>
+                    <li class="active">
+                        <a href="SubmitParamsPage.html"><i class="icon-chevron-right"></i>Specify Parameters</a>
+                    </li>
+                    <li>
+                        <a href="tables.html"><i class="icon-chevron-right"></i>User Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="tables.html"><i class="icon-chevron-right"></i>Help</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- END OF SIDE BAR -->
+            <!-- START OF PARAMETER SUBMISSION FORM -->
+            <div class="span9" id="content">
+                <div class="row-fluid section">
+                    <div class="block">
+
+                        <!-- Heading for the parameter form -->
+                        <div class="navbar navbar-inner block-header">
+                            <div class="muted pull-left">Simulation Parameters</div>
+                        </div>
+
+                        <!-- Body of parameter form -->
+                        <div class="block-content collapse in">
+                            <div class="span12">
+                                <div class="tabbable">
+                                    <div id="rootwizard">
+
+                                        <!-- Tab navigation panel -->
+                                        <div class="navbar">
+                                            <div class="navbar-inner">
+
+                                                <ul class="nav nav-tabs">
+                                                    <li><a href="#tab1" data-toggle="tab">Graphs</a></li>
+                                                    <li><a href="#tab2" data-toggle="tab">General</a></li>
+                                                    <li><a href="#tab3" data-toggle="tab">Hedge Fund</a></li>
+                                                    <li><a href="#tab4" data-toggle="tab">Mutual Fund</a></li>
+                                                    <li><a href="#tab5" data-toggle="tab">Stock Index</a></li>
+                                                    <li><a href="#tab6" data-toggle="tab">Simulation Parameters</a></li>
+                                                </ul>
+
+                                            </div>
+                                        </div>
+
+                                        <!-- Progress bar for the form -->
+                                        <div id="bar" class="progress progress-striped active">
+                                            <div class="bar"></div>
+                                        </div>
+                                        <form class="form-horizontal" id="simparams" name="simparams">
+                                            <div class="tab-content" id="tabList">
+                                                <div class="tab-pane" id="tab1">
+
+                                                    <fieldset id="figs">
+                                                        <legend>Select Graphs</legend>
+                                                        <span class="help-inline">Select the graphs to be generated for your simulation. For each graph, the appropriate plotting ranges will need to be entered upon selection.</span><br />
+                                                        <br />
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="fig_2">Available Graphs</label>
+                                                            <div class="controls">
+                                                                <label class="uniform">
+                                                                    <input class="uniform_on" type="checkbox" id="fig_2" value="fig_2">Difference in Certainty Equivalents - HF Alpha and HF Leverage</label>
+                                                                <label class="uniform">
+                                                                    <input class="uniform_on" type="checkbox" id="fig_3" value="fig_3">Difference in Certainty Equivalents - HF Alpha and MF Alpha</label>
+                                                                <label class="uniform">
+                                                                    <input class="uniform_on" type="checkbox" id="fig_4" value="fig_4">Difference in Certainty Equivalents - HF Alpha and HF Performance Fee</label>
+                                                                <label class="uniform">
+                                                                    <input class="uniform_on" type="checkbox" id="fig_5" value="fig_5">Difference in Certainty Equivalents - HF Volatility and HF Leverage</label>
+                                                                <label class="uniform">
+                                                                    <input class="uniform_on" type="checkbox" id="fig_6" value="fig_6">Difference in Certainty Equivalents - HF Alpha and HF Beta</label>
+                                                                <label class="uniform">
+                                                                    <input class="uniform_on" type="checkbox" id="fig_7" value="fig_7">Difference in Certainty Equivalents - MF Volatility and MF Alpha</label>
+                                                                <label class="uniform">
+                                                                    <input class="uniform_on" type="checkbox" id="fig_9" value="fig_9">Diff. in Certainty Equivalents Comparison, with and without jumps - HF Alpha and HF Leverage</label>
+                                                                <label class="uniform">
+                                                                    <input class="uniform_on" type="checkbox" id="fig_8" value="fig_8">HF Histogram Comparison, with and without jumps</label>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <!-- Difference in Certainty Equivalents - HF Alpha and HF Leverage -->
+                                                    <div class="fig_2" hidden>
+                                                        <fieldset>
+                                                            <legend>Difference in Certainty Equivalents - HF Alpha and HF Leverage</legend>
+                                                            <span class="help-inline">In this section, you can specify the plotting range for your simulation. Invariant parameters will be filled in later sections.
+                                                                Please enter the HF Alpha and HF Leverage ranges for the graph.</span><br />
+                                                            <br />
+
+                                                            <!-- HF Alpha Range -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="alpha_hf_min_fig_2">HF Alpha from</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.00" class="span6" id="alpha_hf_min_fig_2" name="alpha_hf_min_fig_2" required>
+                                                                </div>
+                                                                <br />
+                                                                <label class="control-label" for="alpha_hf_max_fig_2">to </label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.08" class="span6" id="alpha_hf_max_fig_2" name="alpha_hf_max_fig_2" required>
+                                                                </div>
+
+                                                            </div>
+                                                            <br />
+                                                            <!-- HF Leverage Range -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="leverage_hf_min_fig_2">HF Leverage from</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="1.00" class="span6" id="leverage_hf_min_fig_2" name="leverage_hf_min_fig_2" required>
+                                                                </div>
+                                                                <br />
+                                                                <label class="control-label" for="leverage_hf_max_fig_2">to </label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="4.00" class="span6" id="leverage_hf_max_fig_2" name="leverage_hf_max_fig_2" required>
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                        </fieldset>
+                                                    </div>
+                                                    <!-- Difference in Certainty Equivalents - HF Alpha and MF Alpha -->
+                                                    <div class="fig_3" hidden>
+                                                        <fieldset>
+                                                            <legend>Difference in Certainty Equivalents - HF Alpha and MF Alpha</legend>
+                                                            <span class="help-inline">In this section, you can specify the plotting range for your simulation. Invariant parameters will be filled in later sections. Please enter the HF Alpha and MF Alpha ranges for the graph.</span><br />
+                                                            <br />
+
+                                                            <!-- HF Alpha Range -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="alpha_hf_min_fig_3">HF Alpha from</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.00" class="span6" id="alpha_hf_min_fig_3" name="alpha_hf_min_fig_3" required>
+                                                                </div>
+                                                                <br />
+                                                                <label class="control-label" for="alpha_hf_max_fig_3">to </label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.08" class="span6" id="alpha_hf_max_fig_3" name="alpha_hf_max_fig_3" required>
+                                                                </div>
+
+                                                            </div>
+                                                            <br />
+                                                            <!-- MF Alpha Range -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="alpha_mf_min_fig_3">MF Alpha from</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.00" class="span6" id="alpha_mf_min_fig_3" name="alpha_mf_min_fig_3" required>
+                                                                </div>
+                                                                <br />
+                                                                <label class="control-label" for="alpha_mf_max_fig_3">to </label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.08" class="span6" id="alpha_mf_max_fig_3" name="alpha_mf_max_fig_3" required>
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                        </fieldset>
+                                                    </div>
+                                                    <!-- Difference in Certainty Equivalents - HF Alpha and HF Performance Fee -->
+                                                    <div class="fig_4" hidden>
+                                                        <fieldset>
+                                                            <legend>Difference in Certainty Equivalents - HF Alpha and HF Performance Fee</legend>
+                                                            <span class="help-inline">In this section, you can specify the plotting range for your simulation. Invariant parameters will be filled in later sections. Please enter the HF Alpha and HF Performance Fee ranges for the graph.</span><br />
+                                                            <br />
+
+                                                            <!-- HF Alpha Range -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="alpha_hf_min_fig_4">HF Alpha from</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.00" class="span6" id="alpha_hf_min_fig_4" name="alpha_hf_min_fig_4" required>
+                                                                </div>
+                                                                <br />
+                                                                <label class="control-label" for="alpha_hf_max_fig_4">to </label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.08" class="span6" id="alpha_hf_max_fig_4" name="alpha_hf_max_fig_4" required>
+                                                                </div>
+
+                                                            </div>
+                                                            <br />
+                                                            <!-- HF Performance Fee -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="performFee_hf_min_fig_4">Performance Fee from</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.00" class="span6" id="performFee_hf_min_fig_4" name="performFee_hf_min_fig_4" required>
+                                                                </div>
+                                                                <br />
+                                                                <label class="control-label" for="performFee_hf_max_fig_4">to </label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.50" class="span6" id="performFee_hf_max_fig_4" name="performFee_hf_max_fig_4" required>
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                        </fieldset>
+                                                    </div>
+                                                    <!-- Difference in Certainty Equivalents - HF Volatility and HF Leverage -->
+                                                    <div class="fig_5" hidden>
+                                                        <fieldset>
+                                                            <legend>Difference in Certainty Equivalents - HF Volatility and HF Leverage</legend>
+                                                            <span class="help-inline">In this section, you can specify the plotting range for your simulation. Invariant parameters will be filled in later sections. Please enter the HF Volatility and HF Leverage ranges for the graph.</span><br />
+                                                            <br />
+
+                                                            <!-- HF Volatility Range -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="volatility_hf_min_fig_5">HF Volatility from</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.00" class="span6" id="volatility_hf_min_fig_5" name="volatility_hf_min_fig_5" required>
+                                                                </div>
+                                                                <br />
+                                                                <label class="control-label" for="volatility_hf_max_fig_5">to </label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.25" class="span6" id="volatility_hf_max_fig_5" name="volatility_hf_max_fig_5" required>
+                                                                </div>
+
+                                                            </div>
+                                                            <br />
+                                                            <!-- HF Leverage -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="leverage_hf_min_fig_5">HF Leverage from</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.00" class="span6" id="leverage_hf_min_fig_5" name="leverage_hf_min_fig_5" required>
+                                                                </div>
+                                                                <br />
+                                                                <label class="control-label" for="leverage_hf_max_fig_5">to </label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="4.00" class="span6" id="leverage_hf_max_fig_5" name="leverage_hf_max_fig_5" required>
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                        </fieldset>
+                                                    </div>
+                                                    <!-- Difference in Certainty Equivalents - HF Alpha and HF Beta -->
+                                                    <div class="fig_6" hidden>
+                                                        <fieldset>
+                                                            <legend>Difference in Certainty Equivalents - HF Alpha and HF Beta</legend>
+                                                            <span class="help-inline">In this section, you can specify the plotting range for your simulation. Invariant parameters will be filled in later sections. Please enter the HF Alpha and HF Beta ranges for the graph.</span><br />
+                                                            <br />
+
+                                                            <!-- HF Alpha Range -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="alpha_hf_min_fig_6">HF Alpha from</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.00" class="span6" id="alpha_hf_min_fig_6" name="alpha_hf_min_fig_6" required>
+                                                                </div>
+                                                                <br />
+                                                                <label class="control-label" for="alpha_hf_max_fig_6">to </label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.08" class="span6" id="alpha_hf_max_fig_6" name="alpha_hf_max_fig_6" required>
+                                                                </div>
+
+                                                            </div>
+                                                            <br />
+                                                            <!-- HF Beta -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="beta_min_fig_6">HF Beta from</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.0" class="span6" id="beta_min_fig_6" name="beta_min_fig_6" required>
+                                                                </div>
+                                                                <br />
+                                                                <label class="control-label" for="beta_max_fig_6">to </label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="1.0" class="span6" id="beta_max_fig_6" name="beta_max_fig_6" required>
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                        </fieldset>
+                                                    </div>
+                                                    <!-- Difference in Certainty Equivalents - MF Volatility and MF Alpha -->
+                                                    <div class="fig_7" hidden>
+                                                        <fieldset>
+                                                            <legend>Difference in Certainty Equivalents - MF Volatility and MF Alpha</legend>
+                                                            <span class="help-inline">In this section, you can specify the plotting range for your simulation. Invariant parameters will be filled in later sections. Please enter the MF Volatility and MF Alpha ranges for the graph.</span><br />
+                                                            <br />
+
+                                                            <!-- MF Volatility Range -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="volatility_ifmf_min_fig_7">MF Volatility from</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.00" class="span6" id="volatility_ifmf_min_fig_7" name="volatility_ifmf_min_fig_7" required>
+                                                                </div>
+                                                                <br />
+                                                                <label class="control-label" for="volatility_ifmf_max_fig_7">to </label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.25" class="span6" id="volatility_ifmf_max_fig_7" name="volatility_ifmf_max_fig_7" required>
+                                                                </div>
+
+                                                            </div>
+                                                            <br />
+                                                            <!-- MF Alpha Range -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="alpha_mf_min_fig_7">MF Alpha from</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.00" class="span6" id="alpha_mf_min_fig_7" name="alpha_mf_min_fig_7" required>
+                                                                </div>
+                                                                <br />
+                                                                <label class="control-label" for="alpha_mf_max_fig_7">to </label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.08" class="span6" id="alpha_mf_max_fig_7" name="alpha_mf_max_fig_7" required>
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                        </fieldset>
+                                                    </div>
+                                                    <!-- Diff. in Certainty Equivalents Comparison, with and without stochastic jumps - HF Alpha and HF Leverage -->
+                                                    <div class="fig_9" hidden>
+                                                        <fieldset>
+                                                            <legend>Diff. in Certainty Equivalents, with and without jumps - HF Alpha and HF Leverage</legend>
+                                                            <span class="help-inline">In this section, you can specify the plotting range and jump size for your simulation. Invariant parameters will be filled in later sections. Please enter the HF Alpha and HF Leverage ranges for the graph.</span><br />
+                                                            <br />
+
+                                                            <!-- HF Alpha Range -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="alpha_hf_min_fig_9">HF Alpha from</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.00" class="span6" id="alpha_hf_min_fig_9" name="alpha_hf_min_fig_9" required>
+                                                                </div>
+                                                                <br />
+                                                                <label class="control-label" for="alpha_hf_max_fig_9">to </label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.08" class="span6" id="alpha_hf_max_fig_9" name="alpha_hf_max_fig_9" required>
+                                                                </div>
+
+                                                            </div>
+                                                            <br />
+                                                            <!-- HF Leverage Range -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="leverage_hf_min_fig_9">HF Leverage from</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="1.00" class="span6" id="leverage_hf_min_fig_9" name="leverage_hf_min_fig_9" required>
+                                                                </div>
+                                                                <br />
+                                                                <label class="control-label" for="leverage_hf_max_fig_9">to </label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="4.00" class="span6" id="leverage_hf_max_fig_9" name="leverage_hf_max_fig_9" required>
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                            <!-- Jump Size -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="jumpsize_fig_9">Stochastic Jump (%)</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.00" class="span6" id="jumpsize_fig_9" name="jumpsize_fig_9" required>
+                                                                    <p class="help-block">Mean jump magnitude expressed as a percentage. Please note that the jump is considered to be negative.</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <br />
+                                                        </fieldset>
+                                                    </div>
+                                                    <!-- HF Histogram Comparison, with and without stochastic jumps -->
+                                                    <div class="fig_8" hidden>
+                                                        <fieldset>
+                                                            <legend>HF Histogram Comparison, with and without jumps</legend>
+                                                            <span class="help-inline">This selection generates 2 distribution histograms, one for hedge fund value without considering jumps, and one with jumps. HF Alpha, HF Leverage level and Jump size for the histograms need to be specified in this section.</span><br />
+                                                            <br />
+
+                                                            <!-- HF Alpha -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="alpha_hf_fig_8">HF Alpha</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.08" class="span6" id="alpha_hf_fig_8" name="alpha_hf_fig_8" required>
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                            <!-- HF Leverage -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="leverage_hf_fig_8">HF Leverage</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="1.00" class="span6" id="leverage_hf_fig_8" name="leverage_hf_fig_8" required>
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                            <!-- Jump Size -->
+                                                            <div class="control-group">
+                                                                <label class="control-label" for="jumpsize_fig_8">Stochastic Jump (%)</label>
+                                                                <div class="controls">
+                                                                    <input type="number" min="0" step="any" value="0.00" class="span6" id="jumpsize_fig_8" name="jumpsize_fig_8" required>
+                                                                    <p class="help-block">Mean jump magnitude expressed as a percentage. Please note that the jump is considered to be negative.</p>
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                        </fieldset>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="tab-pane" id="tab2">
+
+
+                                                    <!-- General Parameters -->
+                                                    <fieldset>
+                                                        <legend>General parameters</legend>
+                                                        <span class="help-inline">Select the following parameter values for running your simulation, 
+                                                          or choose Submit to run it for the default values.</span><br />
+                                                        <br />
+
+                                                        <!-- Initial Wealth -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="initWealth">Initial Wealth</label>
+                                                            <div class="controls">
+                                                                <input type="number" min="0" step="any" value="1.00" class="span6" id="initWealth" name="initWealth" required>
+                                                                <p class="help-block">Investor's wealth at the beginning of the simulation time-frame.</p>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Relative Risk Aversion -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="relriskAversion">Risk Aversion</label>
+                                                            <div class="controls">
+                                                                <input type="number" min="0" step="1" value="2" class="span6" id="relriskAversion" name="relriskAversion" required>
+                                                                <p class="help-block">Risk Aversion for the investor. Should be greater than 1.</p>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Time Horizon -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="timeHorizon">Investment Time Period (in years)</label>
+                                                            <div class="controls">
+                                                                <input type="number" min="0" step="1" value="1" class="span6" id="timeHorizon" name="timeHorizon" required>
+                                                                <p class="help-block">The time duration for the investment.</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Risk-free rate -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="riskfreeRate">Risk-free Rate</label>
+                                                            <div class="controls">
+                                                                <input type="number" min="0" step="any" value="0.03" class="span6" id="riskfreeRate" name="riskfreeRate" required>
+                                                                <p class="help-block">Expected rate of interest for an absolutely risk-free investment.</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Market Risk Price -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="mktriskPrice">Market Price Risk (%)</label>
+                                                            <div class="controls">
+                                                                <input type="number" min="0" step="any" value="5.0" class="span6" id="mktriskPrice" name="mktriskPrice" required>
+                                                                <p class="help-block">The risk of a decline in the value of a security.</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Liquidation percentage -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="liquidPercent">Liquidation (%)</label>
+                                                            <div class="controls">
+                                                                <input type="number" min="0" step="any" value="2.0" class="span6" id="liquidPercent" name="liquidPercent" required>
+                                                                <p class="help-block">If investor's total wealth falls below this percentage of initial wealth, the risky positions are closed.</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Maximum Leverage -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="maxLeverage">Maximum Leverage</label>
+                                                            <div class="controls">
+                                                                <input type="number" min="0" step="any" value="1.0" class="span6" id="maxLeverage" name="maxLeverage" required>
+                                                                <p class="help-block">Maximum loan the investor can avail, as a multiple of initial wealth.</p>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>      
+
+                                                    
+                                                </div>
+                                                <div class="tab-pane" id="tab3">
+                                                    <!-- Hedge-fund Parameters -->
+                                                    <fieldset>
+                                                        <legend>Hedge fund parameters</legend>
+                                                        <span class="help-inline">Following are the simulation parameters specific to hedge funds.</span><br />
+                                                        <br />
+
+                                                        <!-- Hedge fund management fee -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="fundManagefee_hf">Management Fee (%)</label>
+                                                            <div class="controls">
+                                                                <input type="number" min="0" step="any" value="2.0" class="span6" id="fundManagefee_hf" name="fundManagefee_hf" required>
+                                                                <p class="help-block">Management fee for hedge funds, expressed as a percentage on initial wealth.</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Hedge fund performance fee -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="performFee_hf">Performance Fee (%)</label>
+                                                            <div class="controls">
+                                                                <input type="number" min="0" step="any" value="20.0" class="span6" id="performFee_hf" name="performFee_hf" required>
+                                                                <p class="help-block">Performance-based incentive fee charged by management firm, expressed as a percentage on initial wealth.</p>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="tab-pane" id="tab4">
+                                                    <!-- Mutual-fund Parameters -->
+                                                    <fieldset>
+                                                        <legend>Mutual fund parameters</legend>
+                                                        <span class="help-inline">Following are the simulation parameters specific to mutual funds.</span><br />
+                                                        <br />
+
+                                                        <!-- Mutual fund management fee -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="fundManagefee_mf">Management Fee (%)</label>
+                                                            <div class="controls">
+                                                                <input type="number" min="0" step="any" value="1.0" class="span6" id="fundManagefee_mf" name="fundManagefee_mf" required>
+                                                                <p class="help-block">Management fee for mutual funds, expressed as a percentage on initial wealth.</p>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="tab-pane" id="tab5">
+                                                    <!-- Index-fund Parameters -->
+                                                    <fieldset>
+                                                        <legend>Index Fund parameters</legend>
+                                                        <span class="help-inline">Following are the simulation parameters specific to stock market index.</span><br />
+                                                        <br />
+
+
+
+                                                    </fieldset>
+                                                </div>
+                                                <div class="tab-pane" id="tab6">
+                                                    <!-- Simulation specific Parameters -->
+                                                    <fieldset>
+                                                        <legend>Simulation-specific parameters</legend>
+                                                        <span class="help-inline">Following are parameters that determine the simulation accuracy and duration. Note that we use Monte-Carlo simulation framework. 
+                                                            A large number of possible stock market trajectories are created that reflect the randomness of the market. Larger the number of such trajectories,
+                                                            more accurate will be the outcome and slower will be the simulation.                   
+                                                        </span>
+                                                        <br />
+                                                        <br />
+
+                                                        <!-- Time interval -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="interval">Monitoring Interval</label>
+                                                            <div class="controls">
+                                                                <input type="number" min="0" step="1" value="3" class="span6" id="interval" name="interval" required>
+                                                                <p class="help-block">
+                                                                    Intervals of a year for which the wealth value is being monitored. For example, a value of 4 implies quarterly monitoring, 
+                                                                whereas 365 implies daily monitoring. Higher values increase accuracy and time taken for simulation.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Simulation size -->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="simSize">Number of Outcomes</label>
+                                                            <div class="controls">
+                                                                <input type="number" min="0" step="1" value="10000" class="span6" id="simSize" name="simSize" required>
+                                                                <p class="help-block">Number of stock market trajectories to be simulated. Higher values increase accuracy and time taken for simulation.</p>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+
+                                            <!-- List of Buttons for the form -->
+                                            <ul class="pager wizard">
+                                                <li class="previous first" style="display: none;"><a href="javascript:void(0);">First</a></li>
+                                                <li class="previous"><a href="javascript:void(0);">Previous</a></li>
+                                                <li class="next last" style="display: none;"><a href="javascript:void(0);">Last</a></li>
+                                                <li class="next"><a href="javascript:void(0);">Next</a></li>
+                                                <li class="next finish" style="display: none;"><a href="javascript:postsimparams();">Finish</a></li>
+                                            </ul>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- END OF PARAMETER SUBMISSION FORM -->
+        </div>
+        <hr>
+        <footer>
+            <p>&copy; VB 2013</p>
+        </footer>
+    </div>
+    <!-- END OF PAGE BODY -->
+
+    <script>
+        $(function () {
+            $(".datepicker").datepicker();
+            $(".uniform_on").uniform();
+            $(".chzn-select").chosen();
+            $('.textarea').wysihtml5();
+
+            $('#rootwizard').bootstrapWizard({
+                onTabShow: function (tab, navigation, index) {
+                    var $total = navigation.find('li').length;
+                    var $current = index + 1;
+                    var $percent = ($current / $total) * 100;
+                    $('#rootwizard').find('.bar').css({ width: $percent + '%' });
+                    // If it's the last tab then hide the last button and show the finish instead
+                    if ($current >= $total) {
+                        $('#rootwizard').find('.pager .next').hide();
+                        $('#rootwizard').find('.pager .finish').show();
+                        $('#rootwizard').find('.pager .finish').removeClass('disabled');
+                    } else {
+                        $('#rootwizard').find('.pager .next').show();
+                        $('#rootwizard').find('.pager .finish').hide();
+                    }
+                }
+            });
+            /*$('#rootwizard .finish').click(function () {
+                alert('Finished!, Starting over!');
+                $('#rootwizard').find("a[href*='tab1']").trigger('click');
+            });*/
+        });
+        
+    </script>
+</body>
+
+</html>
